@@ -2,6 +2,9 @@ from flask import Flask,jsonify, request
 import time
 
 app =Flask(__name__)
+@app.route("/")
+def index():
+    return 'Wellcome to saidino app'
 
 @app.route('/bot', methods=['POST'])
 def response():
@@ -11,3 +14,5 @@ def response():
     result = query+" "+time.ctime()
 
     return jsonify(result);
+
+# app.run()
