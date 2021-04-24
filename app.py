@@ -8,12 +8,13 @@ def index():
 
 @app.route('/bot', methods=['POST','GET'])
 def response():
+    if request.method=='GET':
+        return "SO FAZ POST PARA TER A RESPOSTA"
     # recebo o posto mandado por cliente
     # e devolvo para ele o result ai
     query =dict(request.form)['query']
     result = query+" "+time.ctime()
-    if request.method=='GET':
-        return "SO FAZ POST PARA TER A RESPOSTA"
+    
 
     return jsonify(result);
 
