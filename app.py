@@ -27,4 +27,4 @@ def response():
 
     return jsonify(response);
 
-app.run(debug=True)
+# app.run(debug=True)
