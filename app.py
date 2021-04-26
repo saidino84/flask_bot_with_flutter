@@ -16,7 +16,11 @@ def response():
     # recebo o posto mandado por cliente
     # e devolvo para ele o result + a hora que este response foi feita
     query =dict(request.form)['query']
-    result = query+" "+time.ctime()
+    result='comando nao reconhecido'
+    if 'name' in query:
+        result='my name is saidinoBot from python'
+
+    result = result+" \ntime is :"+time.ctime()
     
 
     return jsonify(result);
