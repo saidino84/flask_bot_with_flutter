@@ -19,10 +19,12 @@ def response():
     result='comando nao reconhecido'
     if 'name' in query:
         result='my name is saidinoBot from python'
+    else:
+        result='That command have not implemented yet'
 
-    result = result+" \ntime is :"+time.ctime()
+    response = result+" \ntime is :"+time.ctime()
     
 
-    return jsonify(result);
+    return jsonify(response);
 
 app.run(debug=True)
