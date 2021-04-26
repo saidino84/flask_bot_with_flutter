@@ -1,11 +1,11 @@
-from flask import Flask,jsonify, request
+from flask import Flask,jsonify, request, url_for, render_template
 import time
 
 appUrls='https://flaskchatbotmoz.herokuapp.com',
 app =Flask(__name__)
 @app.route("/")
 def index():
-    return 'Wellcome to saidino app'
+    return render_template('index.html')
 
 routa2='https://flaskchatbotmoz.herokuapp.com/bot'
 @app.route('/bot', methods=['POST','GET'])
@@ -19,6 +19,8 @@ def response():
     result='comando nao reconhecido'
     if 'name' in query:
         result='my name is saidinoBot from python'
+    if 'image' in query.lower():
+        result='thats is saidino image https://flaskchatbotmoz.herokuapp.com/static/image/hacking_tool.png'
     else:
         result='That command have not implemented yet'
 
