@@ -19,7 +19,7 @@ def response():
     result='comando nao reconhecido'
     if 'name' in query:
         result='my name is saidinoBot from python'
-    if 'image' in query.lower():
+    elif 'image' in query.lower():
         result='thats is saidino image https://flaskchatbotmoz.herokuapp.com/static/image/hacking_tool.png'
     else:
         result='That command have not implemented yet'
