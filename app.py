@@ -1,5 +1,6 @@
 from flask import Flask,jsonify, request, url_for, render_template
 import time
+import os
 
 appUrls='https://flaskchatbotmoz.herokuapp.com'
 
@@ -31,4 +32,11 @@ def create_app(*args):
         
     return app
 
-# app.run(debug=True)
+
+def main():
+    app=create_app()
+    port=int(os.environ.get('PORT', 8000))
+    app.run(host='0.0.0.0',port=port)
+
+if __name__ == '__main__':
+    main()
