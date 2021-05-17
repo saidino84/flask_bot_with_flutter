@@ -7,6 +7,7 @@ name = "pypi"
 flask = "*"
 gunicorn = "*"
 pipenv-to-requirements = "*"
+pypng = "*"
 
 [dev-packages]
 
