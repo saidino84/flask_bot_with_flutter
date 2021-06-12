@@ -13,11 +13,11 @@ def create_app(*args):
         os.path.join(os.path.dirname(__file__), 'dados.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    from db import init_db
-    init_db(app)
+    # from db import init_db
+    # init_db(app)
 
-    from models import User
-    from db import db
+    # from models import User
+    # from db import db
 
     @app.route("/", methods=['GET', 'POST'])
     def index():
@@ -27,17 +27,17 @@ def create_app(*args):
         # db.session.add(admin)
         # db.session.commit()
         # print(algo)
-        return render_template('index.html', dados=dados, size=len(dados), u=User.query.all()[0])
+        return render_template('index.html', dados=dados, size=len(dados),)
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
-    @app.shell_context_processor
-    def make_shell_context():
-        # com isto aki posso entrar no shell e fazer testes esporatico
-        '''
-        db.create_all()  >> criare o banco
-        '''
-        return dict(app=app, db=app.db, User=User)
+    # @app.shell_context_processor
+    # def make_shell_context():
+    #     # com isto aki posso entrar no shell e fazer testes esporatico
+    #     '''
+    #     db.create_all()  >> criare o banco
+    #     '''
+    #     return dict(app=app, db=app.db, User=User)
 
     @app.route('/bot', methods=['POST', 'GET'])
     def response():
