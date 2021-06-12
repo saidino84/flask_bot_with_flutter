@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saidino Bots</title>
 </head>
+
 <body>
-    <img src="{{url_for('static',filename='image/hacking_tool.jpg')}}" width:200,height:400>
-    
+    <h2>size {{size}} is enought</h2>
+    <ul>
+        <h3> Usename: {{u.username}}</h3>
+        {% for d in dados %}
+        <li>
+            <p> {{d}} </p>
+        </li>
+        {% endfor %}
+    </ul>
+    <img src="{{url_for('static',filename='image/hacking_tool.jpg')}}" style="width:160px;height:200px;">
+
 </body>
+
 </html>
