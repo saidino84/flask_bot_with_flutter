@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, url_for, render_template
 import time
 import os
+import random
 from modulos import get_current_directory
 
 
@@ -13,21 +14,20 @@ def create_app(*args):
         os.path.join(os.path.dirname(__file__), 'dados.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    # from db import init_db
-    # init_db(app)
+    from db import init_db
+    init_db(app)
 
-    # from models import User
-    # from db import db
+    from models import User
+    from db import db
 
     @app.route("/", methods=['GET', 'POST'])
     def index():
-        dados = get_current_directory(__file__)
-        algo = dados[3]
-        # admin = User(username='admin', email='admin@example.com')
+
+        # clie = User(username='admin', email='admin@example.com')
         # db.session.add(admin)
         # db.session.commit()
         # print(algo)
-        return render_template('index.html', dados=dados, size=len(dados),)
+        return render_template('index.html')
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
