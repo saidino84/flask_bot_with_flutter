@@ -14,10 +14,10 @@ def create_app():
         os.path.join(os.path.dirname(__file__), 'dados.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    from app.db import init_db
-    init_db(app)
+    # from app.db import init_db
+    # init_db(app)
 
-    from app.models.admin import User
+    # from app.models.admin import User
     from app.views.users.bp_users import users_bp
     app.register_blueprint(users_bp, url_prefix='/users_page')
 
@@ -32,13 +32,13 @@ def create_app():
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
-    @app.shell_context_processor
-    def make_shell_context():
+    # @app.shell_context_processor
+    # def make_shell_context():
     #     # com isto aki posso entrar no shell e fazer testes esporatico
     #     '''
         # db.create_all()  >> criare o banco
     #     '''
-        return dict(app=app, db=app.db, User=User)
+        # return dict(app=app, db=app.db, User=User)
 
     @app.route('/bot', methods=['POST', 'GET'])
     def response():
