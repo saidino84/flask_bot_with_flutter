@@ -8,17 +8,18 @@ from modulos import get_current_directory
 appUrls = 'https://flaskchatbotmoz.herokuapp.com'
 
 
-def create_app(*args):
+def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
         os.path.join(os.path.dirname(__file__), 'dados.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    from db import init_db
+    from app.db import init_db
     init_db(app)
 
-    from models import User
-    from db import db
+    from app.models.admin import User
+    from app.views.users.bp_users import users_bp
+    app.register_blueprint(users_bp, url_prefix='/users_page')
 
     @app.route("/", methods=['GET', 'POST'])
     def index():
@@ -31,13 +32,13 @@ def create_app(*args):
 
     routa2 = 'https://flaskchatbotmoz.herokuapp.com/bot'
 
-    # @app.shell_context_processor
-    # def make_shell_context():
+    @app.shell_context_processor
+    def make_shell_context():
     #     # com isto aki posso entrar no shell e fazer testes esporatico
     #     '''
-    #     db.create_all()  >> criare o banco
+        # db.create_all()  >> criare o banco
     #     '''
-    #     return dict(app=app, db=app.db, User=User)
+        return dict(app=app, db=app.db, User=User)
 
     @app.route('/bot', methods=['POST', 'GET'])
     def response():
