@@ -14,10 +14,10 @@ def create_app():
         os.path.join(os.path.dirname(__file__), 'dados.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    # from app.db import init_db
-    # init_db(app)
+    from app.db import init_db
+    init_db(app)
 
-    # from app.models.admin import User
+    from app.models.admin import User
     from app.views.users.bp_users import users_bp
     app.register_blueprint(users_bp, url_prefix='/users_page')
 
