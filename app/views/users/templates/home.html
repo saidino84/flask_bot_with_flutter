@@ -1,0 +1,43 @@
+{%extends 'base.html'%}
+
+
+{% block content %}
+<h3 color=#ffffff class="title-app">USERS ADMIN DASHBOARD</h3>
+<!-- <p>Check all files <a href="/check_files">ver files</a></p> -->
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="/users_page/add">Manipule o Banco de Dados</a>
+        </div>
+        <div class="col-xs-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Nome</th>
+                    <th>email</th>
+                    <th>password</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for user in users%}
+                <tr>
+                    <td>Saidino Pages</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.password}}</td
+                    <td>
+                        <a href="/edit/{{user.id}}">Editar</a> |
+<!--                        chamando o arout /delete/user <id> com parametro de estudante._id-->
+                        <a href="/deletar_user/{{user.id}}">Excluir </a> <!-ao clicar aqui vai chamar @app.route(deletar_user) no python-->
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div
+
+{%endblock%}

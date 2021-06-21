@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request, url_for, render_template
+from flask_migrate import Migrate
 import time
 import os
 import random
 from modulos import get_current_directory
+
 
 
 appUrls = 'https://flaskchatbotmoz.herokuapp.com'
@@ -16,6 +18,7 @@ def create_app():
 
     from app.db import init_db
     init_db(app)
+    Migrate(app,app.db)
 
     from app.models.admin import User
     from app.views.users.bp_users import users_bp

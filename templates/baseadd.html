@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add estudante</title>
+  <style type='text/css' rel='stylesheet' href="{{url_for('static',filename='styles/bootstrap.min.css')}}"></style>
+  <style type='text/css' rel='stylesheet' href="{{url_for('static',filename='styles/default.css')}}"></style>
+</head>
+<body>
+
+<h1 style="text-align:center;">Cadastrar Novo Cliente</h1>
+<form action="/add" method='post' class="container" style="padding-top:20px;">
+    <div class="row col-xs-10" >
+        <div class="col-md-4">
+            <input type="text" name="nome" id="nome" placeholder="Nome do Estudante" class="form-control">
+        </div>
+        <div class="col-md-4">
+            <input type="number" name="idade" id="idade" min="2" max="60" placeholder="Idade do Estudante" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <input type="password" name="password" id="senha" placeholder="Senha" class="form-control">
+        </div>
+    </div>
+    <br>
+<!--    <div class="row col-xs-12">-->
+<!--        <button type="submit" class="btn btn-primary">Cancelar</button>-->
+<!--    </div>-->
+    <div class="row col-xs-9">
+        <button type="submit" class="btn btn-block btn-success" style="margin-left:15px; margin-top:20px;">Enviar</button>
+        <button type="reset" class="btn btn-primary" style="margin-left:15px; margin-top:20px;">Limpar</button>
+    </div>
+
+</form>
+
+</body>
+</html>
