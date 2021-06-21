@@ -8,6 +8,11 @@ class User(db.Model):
     password=db.Column(db.String(200),nullable=False)
 
 
+    @staticmethod
+    def from_json(json):
+        return User(username=json['username'],email=json['email'],password=json['password'])
+
+
 
 
     def __repr__(self):
